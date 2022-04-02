@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 3234880406269017853}
   - component: {fileID: 7137400008220583673}
   - component: {fileID: 1243306393215137465}
-  m_Layer: 0
+  - component: {fileID: 3202198891950298627}
+  m_Layer: 8
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 5524914991862856194}
   m_LocalRotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 4.9999995, y: 4.9999995, z: 4.9999995}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children: []
   m_Father: {fileID: 3453705041365621796}
   m_RootOrder: 0
@@ -112,3 +113,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3202198891950298627
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524914991862856194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7630892198992904530, guid: 1162adb32d20b0c4998b1325024a8715, type: 3}

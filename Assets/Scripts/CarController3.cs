@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// From Arcade Car Driving in Unity by gameplusjames : https://www.youtube.com/watch?v=cqATTzJmFDY
 
-public class CarController2 : MonoBehaviour
+public class CarController3 : MonoBehaviour
 {
     public Rigidbody rb;
 
@@ -25,27 +24,40 @@ public class CarController2 : MonoBehaviour
     void Start()
     {
         rb.transform.parent = null;
-        rb.useGravity = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         speedInput = 0f;
-        if(Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Vertical") > 0)
         {
             speedInput = Input.GetAxis("Vertical") * forwardAccel * 1000f;
-        } 
-        else if(Input.GetAxis("Vertical") < 0)
+        }
+        else if (Input.GetAxis("Vertical") < 0)
         {
             speedInput = Input.GetAxis("Vertical") * reverseAccel * 1000f;
         }
 
         turnInput = Input.GetAxis("Horizontal");
 
-        if(grounded)
+        // Rotation
+        RaycastHit hit;
+
+        if (Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, whatIsGround) && grounded)
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, turnInput * turnStrength * Time.deltaTime, 0f));
+            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(
+            //hit.normal.x * turnInput * turnStrength * Time.deltaTime,
+            //hit.normal.y * turnInput * turnStrength * Time.deltaTime,
+            //0f));
+            //}
+            //transform.Rotate(hit.normal, turnInput * turnStrength * Time.deltaTime);
+            transform.RotateAround(transform.position, hit.normal, turnInput * turnStrength * Time.deltaTime);
+        }
+
+        if (grounded)
+        {
+            
         }
 
         transform.position = rb.transform.position;
@@ -56,16 +68,17 @@ public class CarController2 : MonoBehaviour
         grounded = false;
         RaycastHit hit;
 
-        if(Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, whatIsGround))
+        if (Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, whatIsGround))
         {
             grounded = true;
 
-            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            //transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
 
         }
 
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn, leftFrontWheel.localRotation.eulerAngles.z);
+
 
         if (grounded)
         {

@@ -8,19 +8,19 @@ public class PlanetGravity : MonoBehaviour
     public bool alignToPlanet = true;
 
     float gravityConstant = 9.8f;
-    Rigidbody r;
+    public float gravityFactor = 1f;
+    public Rigidbody r;
 
-    void Start()
+    private void Start()
     {
-        r = GetComponent<Rigidbody>();
+        r.useGravity = false;
     }
-
     void FixedUpdate()
     {
         Vector3 toCenter = planet.position - transform.position;
         toCenter.Normalize();
 
-        r.AddForce(toCenter * gravityConstant, ForceMode.Acceleration);
+        r.AddForce(toCenter * gravityConstant * gravityFactor, ForceMode.Acceleration);
 
         if (alignToPlanet)
         {

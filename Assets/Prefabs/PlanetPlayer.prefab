@@ -130,7 +130,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592463351510261851}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -188,7 +188,7 @@ Rigidbody:
   m_Mass: 70
   m_Drag: 3
   m_AngularDrag: 4
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
@@ -232,8 +232,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4590506176423542491}
-  - component: {fileID: 4592463351641142404}
   - component: {fileID: -4794328605022857827}
+  - component: {fileID: 192875655}
+  - component: {fileID: 78187288}
   m_Layer: 0
   m_Name: PlanetPlayer
   m_TagString: Untagged
@@ -248,7 +249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4593250406617551341}
-  m_LocalRotation: {x: -0, y: -0.69682497, z: -0, w: 0.7172412}
+  m_LocalRotation: {x: 0, y: -0.6968272, z: 0, w: 0.71723914}
   m_LocalPosition: {x: -40.4, y: 13.31, z: -53.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -259,7 +260,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -88.346, z: 0}
---- !u!114 &4592463351641142404
+--- !u!114 &-4794328605022857827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,6 +268,33 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4593250406617551341}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa5f5c9f0151a248a8eda2279efdb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4592463351510261849}
+  forwardAccel: 10
+  reverseAccel: 8
+  maxSpeed: 100
+  turnStrength: 360
+  gravityForce: 10
+  dragOnGround: 3
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  groundRayLength: 0.5
+  groundRayPoint: {fileID: 4592463352156858616}
+  leftFrontWheel: {fileID: 6546993773504244930}
+  rightFrontWheel: {fileID: 8771151391765654450}
+  maxWheelTurn: 25
+--- !u!114 &192875655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7809b51854c2d74ea122e31c081758e, type: 3}
   m_Name: 
@@ -281,12 +309,12 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  groundRayLength: 0.8
+  groundRayLength: 0.5
   groundRayPoint: {fileID: 4592463352156858616}
   leftFrontWheel: {fileID: 6546993773504244930}
   rightFrontWheel: {fileID: 8771151391765654450}
   maxWheelTurn: 25
---- !u!114 &-4794328605022857827
+--- !u!114 &78187288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,9 +323,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4593250406617551341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa5f5c9f0151a248a8eda2279efdb4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 48f4160e60e89f042a579dd12fb614c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  groundRayLength: 10
+  groundRayPoint: {fileID: 4592463352156858616}
+  rb: {fileID: 4592463351510261849}
+  alignToPlanet: 1
+  gravityConstant: 80
 --- !u!1 &5731395548322466626
 GameObject:
   m_ObjectHideFlags: 0

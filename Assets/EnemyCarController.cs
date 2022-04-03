@@ -22,17 +22,38 @@ public class EnemyCarController : MonoBehaviour
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25;
 
+
+    public float angleForMaxTurning = 90;
+
+    private CarController3 player;
+
     // Start is called before the first frame update
     void Start()
     {
         rb.transform.parent = null;
+        player = FindObjectOfType<CarController3>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        speedInput = Input.GetAxis("Vertical") * forwardNormalAccel * 1000f;
-        turnInput = Input.GetAxis("Horizontal");
+        speedInput = forwardNormalAccel * 1000f;
+        //speedInput = 0;
+        //turnInput = Input.GetAxis("Horizontal");
+
+        // Need to know if enemy should turn or not. Linear algebra!
+        // Project the vector between enemy and player to x-z plane of the enemy.
+        Vector3 normal = transform.up;
+        Vector3 toPlayer = player.transform.position - transform.position;
+
+        Vector3 toPlayerProjectedInPlane = toPlayer - OrthogonalProjection(toPlayer, normal);
+
+        // Then calculate angle, returns between -180 and 180.
+        float angle = Vector3.SignedAngle(transform.forward, toPlayerProjectedInPlane, normal);
+
+        float clampedAngle = Mathf.Clamp(angle, -angleForMaxTurning, angleForMaxTurning);
+
+        float turnInput = clampedAngle / angleForMaxTurning;
 
         // Rotation
         RaycastHit hit;
@@ -71,5 +92,11 @@ public class EnemyCarController : MonoBehaviour
         {
             rb.drag = 0.1f;
         }
+    }
+
+    // Projects u onto v.
+    private Vector3 OrthogonalProjection(Vector3 u, Vector3 v)
+    {
+        return v * (Vector3.Dot(u, v) / Mathf.Pow(v.magnitude, 2));
     }
 }

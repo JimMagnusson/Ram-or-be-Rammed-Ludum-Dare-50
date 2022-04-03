@@ -9,9 +9,10 @@ public class CarController3 : MonoBehaviour
 
     public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrength = 180f, gravityForce = 10f, dragOnGround = 3f;
 
-    private float speedInput, turnInput;
+    //private float speedInput, turnInput;
 
     private bool grounded;
+    private Vector3 normal;
 
     public LayerMask whatIsGround;
     public float groundRayLength = 0.5f;
@@ -20,66 +21,65 @@ public class CarController3 : MonoBehaviour
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25;
 
-    // Start is called before the first frame update
+    private float timeCount = 0.0f;
+
+    //public Rigidbody thisRb;
+
+    private float turnInput;
+    private float speedInput;
+
+
+    public float moveSpeed = 10f;
+    public float rotationSpeed = 10f;
+
     void Start()
     {
-        rb.transform.parent = null;
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        speedInput = 0f;
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 1000f;
-        }
-        else if (Input.GetAxis("Vertical") < 0)
-        {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 1000f;
-        }
-
-        turnInput = Input.GetAxis("Horizontal");
-
-        // Rotation
-        RaycastHit hit;
-
-        if (Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, whatIsGround) && grounded)
-        {
-            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(
-            //hit.normal.x * turnInput * turnStrength * Time.deltaTime,
-            //hit.normal.y * turnInput * turnStrength * Time.deltaTime,
-            //0f));
-            //}
-            //transform.Rotate(hit.normal, turnInput * turnStrength * Time.deltaTime);
-            transform.RotateAround(transform.position, hit.normal, turnInput * turnStrength * Time.deltaTime);
-        }
-
-        if (grounded)
-        {
-            
-        }
-
-        transform.position = rb.transform.position;
+        speedInput = Input.GetAxis("Vertical");
+        turnInput = Input.GetAxisRaw("Horizontal");
     }
+
 
     private void FixedUpdate()
     {
+        /*
         grounded = false;
         RaycastHit hit;
 
         if (Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, whatIsGround))
         {
             grounded = true;
-
-            //transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            normal = hit.normal;
+            //.RotateAround(transform.position, hit.normal, turnInput * turnStrength * Input.GetAxis("Vertical") * Time.deltaTime);
+            Quaternion finalRotation = transform.rotation * Quaternion.AngleAxis(turnInput * turnStrength * Time.deltaTime, normal);
+            
+            transform.rotation = finalRotation;
+            
+            
+            //transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, Time.deltaTime);
 
         }
+        */
 
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn, leftFrontWheel.localRotation.eulerAngles.z);
 
+        if(speedInput != 0)
+        {
+            rb.MovePosition(rb.position + transform.forward * speedInput * moveSpeed * Time.fixedDeltaTime);
+        }
+        
+        Vector3 yRotation = Vector3.up * turnInput * rotationSpeed * Time.fixedDeltaTime;
+        Quaternion deltaRotation = Quaternion.Euler(yRotation);
+        Quaternion targetRotation = rb.rotation * deltaRotation;
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.deltaTime));
 
+
+        /*
         if (grounded)
         {
             rb.drag = dragOnGround;
@@ -93,7 +93,12 @@ public class CarController3 : MonoBehaviour
         {
             rb.drag = 0.1f;
 
-            rb.AddForce(Vector3.up * -gravityForce * 100);
+            rb.AddForce(normal * -gravityForce * 100);
         }
+        */
+
+        //rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
+        //thisRb.MovePosition(rb.position);
+        //transform.position = rb.transform.position;
     }
 }

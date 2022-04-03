@@ -8,8 +8,14 @@ public class FauxGravity : MonoBehaviour
     public float groundRayLength = 10f;
     public Transform groundRayPoint;
     public Rigidbody rb;
+
     public bool alignToPlanet = true;
     public float gravityConstant = 9.8f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void FixedUpdate()
     {
@@ -24,7 +30,14 @@ public class FauxGravity : MonoBehaviour
             {
                 Quaternion q = Quaternion.FromToRotation(transform.up, hit.normal);
                 q = q * transform.rotation;
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, 1);
+                //newRotation = q;
+                //transform.rotation = Quaternion.Slerp(transform.rotation, q, 1);
+                //transform.rotation = q;
+                //Quaternion.Slerp(rb.rotation, q, 50f * Time.deltaTime)
+                //thisRb.MoveRotation(q);
+
+
+
             }
         }
     }

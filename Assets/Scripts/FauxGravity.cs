@@ -12,11 +12,6 @@ public class FauxGravity : MonoBehaviour
     public bool alignToPlanet = true;
     public float gravityConstant = 9.8f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
     private void FixedUpdate()
     {
         RaycastHit hit;
@@ -32,12 +27,8 @@ public class FauxGravity : MonoBehaviour
                 q = q * transform.rotation;
                 //newRotation = q;
                 //transform.rotation = Quaternion.Slerp(transform.rotation, q, 1);
-                //transform.rotation = q;
+                transform.rotation = q;
                 //Quaternion.Slerp(rb.rotation, q, 50f * Time.deltaTime)
-                //thisRb.MoveRotation(q);
-
-
-
             }
         }
     }

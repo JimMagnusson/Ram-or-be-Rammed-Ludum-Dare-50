@@ -65,12 +65,12 @@ public class CarController3 : MonoBehaviour
         }
         */
 
-        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
-        rightFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn, leftFrontWheel.localRotation.eulerAngles.z);
+        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180 - 90, leftFrontWheel.localRotation.eulerAngles.z);
+        rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn + 90, leftFrontWheel.localRotation.eulerAngles.z);
 
         if(speedInput != 0)
         {
-            rb.MovePosition(rb.position + transform.forward * speedInput * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + -transform.right * speedInput * moveSpeed * Time.fixedDeltaTime);
         }
         
         Vector3 yRotation = Vector3.up * turnInput * rotationSpeed * Time.fixedDeltaTime;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PartCollector : MonoBehaviour
 {
+    [SerializeField] private bool togglesCarOnFirstPickup = false;
     [SerializeField] private Transform under;
     [SerializeField] private Transform wheelCovers;
     [SerializeField] private Transform front;
@@ -12,10 +13,13 @@ public class PartCollector : MonoBehaviour
 
     private Grower grower;
     private int partsCollected = 0;
+    private EnemyCarController enemyCarController;
+
 
     private void Start()
     {
         grower = GetComponent<Grower>();
+        enemyCarController = FindObjectOfType<EnemyCarController>();
     }
 
     public int GetPartsCollected()
@@ -31,6 +35,10 @@ public class PartCollector : MonoBehaviour
             switch(partsCollected)
             {
                 case 1:
+                    if(togglesCarOnFirstPickup)
+                    {
+                        enemyCarController.ToggleCar(true);
+                    }
                     under.gameObject.SetActive(true);
                     break;
                 case 2:

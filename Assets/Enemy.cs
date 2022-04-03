@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     public void DoGetDestroyedEffects()
     {
-        enemyCarController.StopCar();
+        enemyCarController.ToggleCar(false);
 
         // SFX
         if (audioSource != null && isDestroyedSound != null)
@@ -35,6 +35,6 @@ public class Enemy : MonoBehaviour
 
     public void Stop()
     {
-        enemyCarController.StopCar();
+        enemyCarController.ToggleCar(false);
     }
 }

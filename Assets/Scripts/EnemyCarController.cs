@@ -26,16 +26,18 @@ public class EnemyCarController : MonoBehaviour
     public float angleForMaxTurning = 90;
 
     private CarController3 player;
-    private bool stopped = false;
+    [SerializeField] private bool turnedOn = false;
 
-    public void StopCar()
+    public void ToggleCar(bool boolean)
     {
-        stopped = true;
+        rb.gameObject.SetActive(boolean);
+        turnedOn = boolean;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        rb.gameObject.SetActive(turnedOn);
         rb.transform.parent = null;
         player = FindObjectOfType<CarController3>();
     }
@@ -43,10 +45,11 @@ public class EnemyCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(stopped)
+        if(!turnedOn)
         {
             speedInput = 0;
             turnInput = 0;
+            rb.isKinematic = false;
             return;
         }
         speedInput = forwardNormalAccel * 1000f;

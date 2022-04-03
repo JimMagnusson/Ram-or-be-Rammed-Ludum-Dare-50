@@ -26,6 +26,12 @@ public class EnemyCarController : MonoBehaviour
     public float angleForMaxTurning = 90;
 
     private CarController3 player;
+    private bool stopped = false;
+
+    public void StopCar()
+    {
+        stopped = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +43,12 @@ public class EnemyCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(stopped)
+        {
+            speedInput = 0;
+            turnInput = 0;
+            return;
+        }
         speedInput = forwardNormalAccel * 1000f;
         // speedInput = 0;
         //turnInput = Input.GetAxis("Horizontal");
@@ -53,7 +65,7 @@ public class EnemyCarController : MonoBehaviour
 
         float clampedAngle = Mathf.Clamp(angle, -angleForMaxTurning, angleForMaxTurning);
 
-        float turnInput = clampedAngle / angleForMaxTurning;
+        turnInput = clampedAngle / angleForMaxTurning;
 
         // Rotation
         RaycastHit hit;

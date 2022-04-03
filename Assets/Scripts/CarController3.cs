@@ -38,6 +38,14 @@ public class CarController3 : MonoBehaviour
     private PartCollector partCollector;
     public int partsRequiredForObjects = 5;
 
+    private bool stopped = false;
+
+    public void StopCar()
+    {
+        stopped = true;
+    }
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,6 +56,12 @@ public class CarController3 : MonoBehaviour
     {
         speedInput = Input.GetAxis("Vertical");
         turnInput = Input.GetAxisRaw("Horizontal");
+
+        if (stopped)
+        {
+            speedInput = 0;
+            turnInput = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -70,7 +84,6 @@ public class CarController3 : MonoBehaviour
 
         }
         */
-
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180 - 90, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn + 90, leftFrontWheel.localRotation.eulerAngles.z);
 

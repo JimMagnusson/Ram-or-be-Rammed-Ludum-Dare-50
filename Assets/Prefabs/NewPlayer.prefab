@@ -23,12 +23,42 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154345538}
-  m_LocalRotation: {x: 0.12721606, y: -0.6921997, z: 0.1264131, w: 0.6990676}
-  m_LocalPosition: {x: 28.705433, y: 11.38905, z: -0.83825666}
+  m_LocalRotation: {x: 0.4036061, y: -0.5767988, z: 0.39701256, w: 0.58888566}
+  m_LocalPosition: {x: 8.75145, y: 22.688675, z: 0.70648193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4106304900889905853}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &278912461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278912462}
+  m_Layer: 0
+  m_Name: Right Obstacle Ray point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278912462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278912461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.667, y: 0.036, z: 0.967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1268072132714214927}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347737502
 GameObject:
@@ -132,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968136483}
   m_Layer: 0
-  m_Name: Ray Point
+  m_Name: Ground Ray Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +181,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1268072132714214927}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1113198611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113198612}
+  m_Layer: 0
+  m_Name: 'Left Obstacle Ray Point '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113198612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113198611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.667, y: 0.036, z: -0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1268072132714214927}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1557546471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557546472}
+  m_Layer: 0
+  m_Name: Obstacle Ray Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1557546472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557546471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.05, y: 0.168, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1268072132714214927}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2431423578367123804
 GameObject:
@@ -187,6 +277,9 @@ Transform:
   - {fileID: 1921673333453537378}
   - {fileID: 3263319113733070288}
   - {fileID: 968136483}
+  - {fileID: 1557546472}
+  - {fileID: 278912462}
+  - {fileID: 1113198612}
   m_Father: {fileID: 4106304900889905853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -283,12 +376,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundRayLength: 0.5
-  groundRayPoint: {fileID: 0}
+  groundRayPoint: {fileID: 968136483}
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleCheckRayLength: 0.05
+  obstacleCheckRayRadius: 0.3
+  frontRayPoint: {fileID: 1557546472}
+  leftRayPoint: {fileID: 0}
+  rightRayPoint: {fileID: 0}
   leftFrontWheel: {fileID: 80655190348644954}
   rightFrontWheel: {fileID: 5367294717873406314}
   maxWheelTurn: 25
-  moveSpeed: 4
-  rotationSpeed: 50
+  moveSpeed: 5
+  rotationSpeed: 100
 --- !u!114 &474058883318176684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,8 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e4acf3e9d01ea49b2f0ac65261de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeIncreasePerPart: 0.05
-  toGrow: {fileID: 0}
+  sizeIncreasePerPart: 0.1
+  toGrow: {fileID: 1268072132714214927}
 --- !u!1001 &237267245265597514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -473,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4e9a7c25d3495d4cb098c7ddbd4fa48, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e9a7c25d3495d4cb098c7ddbd4fa48, type: 3}
@@ -769,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9bc68c2c3dc2c24f8f27bc94e984ebb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9bc68c2c3dc2c24f8f27bc94e984ebb, type: 3}
@@ -843,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1598d4bdc13b1874aafaa1753abf8902, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1598d4bdc13b1874aafaa1753abf8902, type: 3}
@@ -971,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e5af9b57820261e458ffcb78b55ab778, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5af9b57820261e458ffcb78b55ab778, type: 3}
@@ -1107,7 +1208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ba8d476016c74584b89e331ea1339fab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba8d476016c74584b89e331ea1339fab, type: 3}

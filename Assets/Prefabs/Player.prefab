@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &208182425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208182426}
+  m_Layer: 0
+  m_Name: Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &208182426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208182425}
+  m_LocalRotation: {x: -0.2857469, y: 0.013466416, z: -0.004142567, w: -0.9582015}
+  m_LocalPosition: {x: 0.00017756224, y: 16.82071, z: -25.24383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4590506176423542491}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426014890449033035
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,12 +125,12 @@ GameObject:
   - component: {fileID: 4592463351510261846}
   - component: {fileID: 4592463351510261849}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Car Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4592463351510261848
 Transform:
   m_ObjectHideFlags: 0
@@ -190,7 +220,7 @@ Rigidbody:
   m_AngularDrag: 4
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &4592463352156858619
@@ -234,13 +264,23 @@ GameObject:
   - component: {fileID: 4590506176423542491}
   - component: {fileID: -4794328605022857827}
   - component: {fileID: 78187288}
+  - component: {fileID: 18070816}
+  - component: {fileID: 18070817}
+  - component: {fileID: 18070818}
+  - component: {fileID: 18070819}
+  - component: {fileID: 18070820}
+  - component: {fileID: 18070821}
+  - component: {fileID: 18070822}
+  - component: {fileID: 18070823}
+  - component: {fileID: 18070824}
+  - component: {fileID: 18070827}
   m_Layer: 0
-  m_Name: PlanetPlayer
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4590506176423542491
 Transform:
   m_ObjectHideFlags: 0
@@ -256,6 +296,7 @@ Transform:
   - {fileID: 8044044041173095133}
   - {fileID: 4592463351510261848}
   - {fileID: 4592463352156858616}
+  - {fileID: 208182426}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -88.346, z: 0}
@@ -271,11 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa5f5c9f0151a248a8eda2279efdb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4592463351510261849}
+  rb: {fileID: 18070816}
   forwardAccel: 10
   reverseAccel: 8
   maxSpeed: 100
-  turnStrength: 360
+  turnStrength: 180
   gravityForce: 10
   dragOnGround: 3
   whatIsGround:
@@ -286,6 +327,8 @@ MonoBehaviour:
   leftFrontWheel: {fileID: 6546993773504244930}
   rightFrontWheel: {fileID: 8771151391765654450}
   maxWheelTurn: 25
+  moveSpeed: 25
+  rotationSpeed: 200
 --- !u!114 &78187288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +349,139 @@ MonoBehaviour:
   rb: {fileID: 4592463351510261849}
   alignToPlanet: 1
   gravityConstant: 80
+--- !u!54 &18070816
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  serializedVersion: 2
+  m_Mass: 70
+  m_Drag: 3
+  m_AngularDrag: 4
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &18070817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37149414, y: 0.6801225, z: 0.5677248}
+  m_Center: {x: -0.8498296, y: -0.37791532, z: 1.4}
+--- !u!65 &18070818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37149414, y: 0.6801225, z: 0.5677248}
+  m_Center: {x: 0.8, y: -0.37791532, z: 1.4}
+--- !u!65 &18070819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37149414, y: 0.6801225, z: 0.5677248}
+  m_Center: {x: -0.8498296, y: -0.37791532, z: -1.2333989}
+--- !u!65 &18070820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37149414, y: 0.6801225, z: 0.5677248}
+  m_Center: {x: 0.8, y: -0.37791532, z: -1.2333989}
+--- !u!135 &18070821
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0.8, y: -0.3779153, z: -1.233399}
+--- !u!135 &18070822
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: -0.8498296, y: -0.3779153, z: -1.233399}
+--- !u!135 &18070823
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0.8, y: -0.3779153, z: 1.4}
+--- !u!135 &18070824
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: -0.8498296, y: -0.3779153, z: 1.4}
+--- !u!65 &18070827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593250406617551341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.9814681}
+  m_Center: {x: -1.2751543e-11, y: 0, z: -0.00926578}
 --- !u!1 &5731395548322466626
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8044044041173095133}
+  - component: {fileID: 891070157}
   m_Layer: 0
   m_Name: Wheels
   m_TagString: Untagged
@@ -337,6 +514,24 @@ Transform:
   m_Father: {fileID: 4590506176423542491}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &891070157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5731395548322466626}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca357f46a394f5418bcd0362c082ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  groundRayLength: 10
+  groundRayPoint: {fileID: 4592463352156858616}
+  alignToPlanet: 1
 --- !u!1 &7290823281396561525
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +543,7 @@ GameObject:
   - component: {fileID: 7290823281396787797}
   - component: {fileID: 7290823281399687797}
   - component: {fileID: 7290823281398556853}
+  - component: {fileID: 1887623135}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -419,6 +615,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1887623135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290823281396561525}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca357f46a394f5418bcd0362c082ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  groundRayLength: 10
+  groundRayPoint: {fileID: 4592463352156858616}
+  alignToPlanet: 1
 --- !u!1 &7384226874688998254
 GameObject:
   m_ObjectHideFlags: 0

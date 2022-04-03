@@ -5,7 +5,8 @@ using UnityEngine;
 public class Part : MonoBehaviour
 {
     [SerializeField] private AudioClip collectSound = null;
-    [SerializeField] private Transform body;
+    [SerializeField] private Transform[] bodies;
+    [SerializeField] private GameObject particles;
 
     private AudioSource audioSource;
 
@@ -19,12 +20,17 @@ public class Part : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            if(audioSource != null)
+            if(particles != null)
+            {
+                particles = Instantiate(particles, transform.position, Quaternion.identity, null);
+            }
+            if (audioSource != null)
             {
                 audioSource.PlayOneShot(collectSound);
             }
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            if (body != null)
+
+            foreach (Transform body in bodies)
             {
                 body.gameObject.SetActive(false);
             }

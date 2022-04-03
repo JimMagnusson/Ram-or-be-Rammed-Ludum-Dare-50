@@ -7,10 +7,7 @@ public class CarController3 : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrength = 180f, gravityForce = 10f, dragOnGround = 3f;
-
-    //private float speedInput, turnInput;
-
+    //dragOnGround = 3f;
     private bool grounded;
     private Vector3 normal;
 
@@ -20,8 +17,6 @@ public class CarController3 : MonoBehaviour
 
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25;
-
-    private float timeCount = 0.0f;
 
     //public Rigidbody thisRb;
 

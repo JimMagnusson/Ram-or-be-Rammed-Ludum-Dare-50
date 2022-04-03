@@ -78,27 +78,5 @@ public class CarController3 : MonoBehaviour
         Quaternion targetRotation = rb.rotation * deltaRotation;
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.deltaTime));
 
-
-        /*
-        if (grounded)
-        {
-            rb.drag = dragOnGround;
-
-            if (Mathf.Abs(speedInput) > 0)
-            {
-                rb.AddForce(transform.forward * speedInput);
-            }
-        }
-        else
-        {
-            rb.drag = 0.1f;
-
-            rb.AddForce(normal * -gravityForce * 100);
-        }
-        */
-
-        //rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
-        //thisRb.MovePosition(rb.position);
-        //transform.position = rb.transform.position;
     }
 }

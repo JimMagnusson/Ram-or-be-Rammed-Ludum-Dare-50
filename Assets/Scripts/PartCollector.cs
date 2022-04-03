@@ -17,6 +17,12 @@ public class PartCollector : MonoBehaviour
     {
         grower = GetComponent<Grower>();
     }
+
+    public int GetPartsCollected()
+    {
+        return partsCollected;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<Part>())

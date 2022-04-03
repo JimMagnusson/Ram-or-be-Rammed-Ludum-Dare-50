@@ -7,7 +7,6 @@ public class Part : MonoBehaviour
     [SerializeField] private AudioClip collectSound = null;
     [SerializeField] private Transform body;
 
-    private float shortDelay = 0.1f;
     private AudioSource audioSource;
 
     private void Start()

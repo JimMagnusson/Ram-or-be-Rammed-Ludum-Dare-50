@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 2126965462236538627}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,6 +823,7 @@ MonoBehaviour:
   leftFrontWheel: {fileID: 1365428760735497218}
   rightFrontWheel: {fileID: 4944175857111949522}
   maxWheelTurn: 25
+  angleForMaxTurning: 90
 --- !u!114 &2126965462236538627
 MonoBehaviour:
   m_ObjectHideFlags: 0

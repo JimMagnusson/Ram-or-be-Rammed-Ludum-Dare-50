@@ -35,9 +35,13 @@ public class CarController3 : MonoBehaviour
     public float moveSpeed = 10f;
     public float rotationSpeed = 10f;
 
+    private PartCollector partCollector;
+    public int partsRequiredForObjects = 5;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        partCollector = GetComponent<PartCollector>();
     }
 
     void Update()
@@ -81,21 +85,30 @@ public class CarController3 : MonoBehaviour
         //if (Physics.Raycast(frontRayPoint.position, -transform.right, out hit, obstacleCheckRayLength, whatIsObstacle))
         if(Physics.SphereCast(frontRayPoint.position, obstacleCheckRayRadius, -transform.right, out hit, obstacleCheckRayLength, whatIsObstacle))
         {
-            hitObstacleInFront = true;
+            if(partCollector.GetPartsCollected() < partsRequiredForObjects)
+            {
+                hitObstacleInFront = true;
+            }
         }
 
         // Left
 
         if (Physics.SphereCast(leftRayPoint.position, obstacleCheckRayRadius, -transform.forward, out hit, obstacleCheckRayLength, whatIsObstacle))
         {
-            hitObstacleLeft = true;
+            if (partCollector.GetPartsCollected() < partsRequiredForObjects)
+            {
+                hitObstacleLeft = true;
+            }
         }
 
         // Right:
 
         if (Physics.SphereCast(rightRayPoint.position, obstacleCheckRayRadius, transform.forward, out hit, obstacleCheckRayLength, whatIsObstacle))
         {
-            hitObstacleRight = true;
+            if (partCollector.GetPartsCollected() < partsRequiredForObjects)
+            {
+                hitObstacleRight = true;
+            }
         }
 
         if ((speedInput > 0 && !hitObstacleInFront) || speedInput < 0)

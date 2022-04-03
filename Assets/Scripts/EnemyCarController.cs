@@ -38,7 +38,7 @@ public class EnemyCarController : MonoBehaviour
     void Update()
     {
         speedInput = forwardNormalAccel * 1000f;
-        //speedInput = 0;
+        // speedInput = 0;
         //turnInput = Input.GetAxis("Horizontal");
 
         // Need to know if enemy should turn or not. Linear algebra!

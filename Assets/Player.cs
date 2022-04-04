@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             partCollector.CollectPart();
             other.GetComponent<Part>().DoCollectEffects();
         }
-        else if (other.transform.CompareTag("Obstacle"))
+        else if (other.transform.CompareTag("Destructible"))
         {
             Destructible destructible = other.transform.GetComponentInParent<Destructible>();
             if (partCollector.GetPartsCollected() >= destructible.GetPartsRequiredToDestroy())

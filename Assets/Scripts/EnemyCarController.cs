@@ -59,13 +59,20 @@ public class EnemyCarController : MonoBehaviour
 
     private FauxGravity2 fauxGravity2;
 
+    public ParticleSystem trailParticlesLeft;
+    public ParticleSystem trailParticlesRight;
+
     public void TurnOffCar()
     {
         state = EnemyState.turnedOff;
+        trailParticlesLeft.Stop();
+        trailParticlesRight.Stop();
     }
     public void TurnOnCar()
     {
         state = EnemyState.normal;
+        trailParticlesLeft.Play();
+        trailParticlesRight.Play();
     }
 
     // Start is called before the first frame update
@@ -85,6 +92,8 @@ public class EnemyCarController : MonoBehaviour
         // Randomize charge cooldown time
         chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
         Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
+        trailParticlesLeft.Stop();
+        trailParticlesRight.Stop();
 
     }
 
@@ -122,6 +131,7 @@ public class EnemyCarController : MonoBehaviour
                 return;
 
             case EnemyState.normal:
+
                 speedInput = forwardNormalAccel * 1000f;
                 turnInput = clampedAngle / angleForMaxTurning;
                 rb.gameObject.SetActive(true);
@@ -136,6 +146,8 @@ public class EnemyCarController : MonoBehaviour
                     chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
                     Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
                     chargeCooldownTimer = 0;
+                    trailParticlesLeft.Play();
+                    trailParticlesRight.Play();
                 }
 
                 break;
@@ -154,6 +166,8 @@ public class EnemyCarController : MonoBehaviour
                     chargeTimer = 0;
                     fauxGravity2.ToggleHighGravity(false);
                     rb.velocity = Vector3.zero;
+                    trailParticlesLeft.Stop();
+                    trailParticlesRight.Stop();
                 }
                 break;
             case EnemyState.recharging:
@@ -168,6 +182,8 @@ public class EnemyCarController : MonoBehaviour
                 {
                     state = EnemyState.normal;
                     rechargeTimer = 0;
+                    trailParticlesLeft.Play();
+                    trailParticlesRight.Play();
                 }
                 return;
             case EnemyState.preCharging:
@@ -181,6 +197,8 @@ public class EnemyCarController : MonoBehaviour
                 {
                     state = EnemyState.charging;
                     preChargeTimer = 0;
+                    trailParticlesLeft.Play();
+                    trailParticlesRight.Play();
                 }
                 break;
         }

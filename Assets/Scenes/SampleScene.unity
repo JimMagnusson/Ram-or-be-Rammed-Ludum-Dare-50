@@ -231,24 +231,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287659389}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &415103335 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5021148494558998701, guid: d18cd132c5458c4469a4651665f410d7, type: 3}
-  m_PrefabInstance: {fileID: 1267470026}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &415103336
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415103335}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.387642, y: 0.86021423, z: 1}
-  m_Center: {x: -0.11741638, y: 0.21152496, z: 0}
 --- !u!1001 &428929028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,10 +786,6 @@ PrefabInstance:
       propertyPath: maxNormalSpeed
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 48990887, guid: d18cd132c5458c4469a4651665f410d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 221610884, guid: d18cd132c5458c4469a4651665f410d7, type: 3}
       propertyPath: gravityConstant
       value: 80
@@ -864,7 +842,8 @@ PrefabInstance:
       propertyPath: sizeIncreasePerPart
       value: 0.05
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1025927667, guid: d18cd132c5458c4469a4651665f410d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d18cd132c5458c4469a4651665f410d7, type: 3}
 --- !u!4 &1267470027 stripped
 Transform:

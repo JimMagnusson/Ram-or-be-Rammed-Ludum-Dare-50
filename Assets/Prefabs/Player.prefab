@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 1877175278514634216}
   - component: {fileID: -5707746500144040262}
   - component: {fileID: 221610884}
+  - component: {fileID: 8524617007979491668}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -597,6 +598,19 @@ MonoBehaviour:
   groundRayPoint: {fileID: 1877175277634931691}
   rb: {fileID: 48990892}
   gravityConstant: 80
+--- !u!65 &8524617007979491668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021148494558998701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.387642, y: 0.86021423, z: 1}
+  m_Center: {x: -0.11741638, y: 0.21152496, z: 0}
 --- !u!1 &7504737217654126494
 GameObject:
   m_ObjectHideFlags: 0

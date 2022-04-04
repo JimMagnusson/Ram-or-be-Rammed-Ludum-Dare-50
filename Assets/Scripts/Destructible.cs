@@ -10,6 +10,8 @@ public class Destructible : MonoBehaviour
 
     [SerializeField] private int partsRequiredToDestroy = 5;
 
+    [SerializeField] private GameObject particles;
+
     private AudioSource audioSource;
     private bool collidedWith = false;
     // Start is called before the first frame update
@@ -21,15 +23,6 @@ public class Destructible : MonoBehaviour
     public int GetPartsRequiredToDestroy()
     {
         return partsRequiredToDestroy;
-    }
-
-    // VFX and SFX when collided with.
-    public void CollideWith(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            DoDestructionEffects();
-        }
     }
 
     public void DoDestructionEffects()
@@ -47,7 +40,10 @@ public class Destructible : MonoBehaviour
             body.gameObject.SetActive(false);
         }
 
-        // TODO: Trigger particles
+        if (particles != null)
+        {
+            particles = Instantiate(particles, transform.position, Quaternion.identity, null);
+        }
 
         Destroy(gameObject, 1f);
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BodyColliderTrigger : MonoBehaviour
 {
+    /*
     private Destructible destructible;
     private void Start()
     {
@@ -14,4 +15,5 @@ public class BodyColliderTrigger : MonoBehaviour
         if(destructible == null) { return; }
         destructible.CollideWith(other);
     }
+    */
 }

@@ -37,4 +37,12 @@ public class Enemy : MonoBehaviour
     {
         enemyCarController.ToggleCar(false);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Destructible"))
+        {
+            other.GetComponentInParent<Destructible>().DoDestructionEffects();
+        }
+    }
 }

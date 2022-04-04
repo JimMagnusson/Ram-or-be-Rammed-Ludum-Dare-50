@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 8283157407175895733}
   - {fileID: 8283157408378037887}
   partsRequiredToDestroy: 5
+  particles: {fileID: 0}
 --- !u!64 &2525101805275474773
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a59fa9150ee96e54ead63cf766bb02de, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a59fa9150ee96e54ead63cf766bb02de, type: 3}
@@ -262,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 17862cd19ec1e014b8e5b561d317c828, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Destructible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17862cd19ec1e014b8e5b561d317c828, type: 3}

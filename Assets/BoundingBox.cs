@@ -11,6 +11,7 @@ public class BoundingBox : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Got hit by: " + collision.gameObject.name);
         if (levelLoader != null)
         {
             levelLoader.ReloadScene();

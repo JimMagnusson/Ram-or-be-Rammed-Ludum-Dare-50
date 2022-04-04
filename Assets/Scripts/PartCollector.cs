@@ -35,7 +35,7 @@ public class PartCollector : MonoBehaviour
             case 1:
                 if (togglesCarOnFirstPickup)
                 {
-                    enemyCarController.ToggleCar(true);
+                    enemyCarController.TurnOnCar();
                 }
                 under.gameObject.SetActive(true);
                 break;

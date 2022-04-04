@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             else
             {
                 DoDestroyedEffects();
-                other.GetComponent<Enemy>().Stop();
+                other.GetComponent<Enemy>().GoStraight();
             }
         }
         else if (other.CompareTag("Part"))

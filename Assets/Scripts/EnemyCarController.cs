@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyState
+{
+    turnedOff,
+    recharging,
+    preCharging,
+    charging,
+    normal
+}
 
 public class EnemyCarController : MonoBehaviour
 {
@@ -26,36 +34,71 @@ public class EnemyCarController : MonoBehaviour
     public float angleForMaxTurning = 90;
 
     private Player player;
-    [SerializeField] private bool turnedOn = false;
+    [SerializeField] private bool turnedOnAtStart = false;
 
-    public void ToggleCar(bool boolean)
+    public float rechargeTime = 4f;
+    private float rechargeTimer = 0f;
+
+    public float preChargeTime = 2f;
+    private float preChargeTimer = 0f;
+
+    public float chargeCooldownMinTime = 3f;
+    public float chargeCooldownMaxTime = 6f;
+
+    private float chargeCooldownTime = 0f;
+    private float chargeCooldownTimer = 0f;
+
+    public float chargeTime = 3f;
+    private float chargeTimer = 0f;
+
+    public bool chargeEnabled = true;
+
+    private bool goingStraight = false;
+
+    public EnemyState state = EnemyState.normal;
+
+    private FauxGravity2 fauxGravity2;
+
+    public void TurnOffCar()
     {
-        rb.gameObject.SetActive(boolean);
-        turnedOn = boolean;
+        state = EnemyState.turnedOff;
+    }
+    public void TurnOnCar()
+    {
+        state = EnemyState.normal;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.gameObject.SetActive(turnedOn);
+        fauxGravity2 = GetComponent<FauxGravity2>();
+        rb.gameObject.SetActive(turnedOnAtStart);
+        if(turnedOnAtStart)
+        {
+            state = EnemyState.normal;
+        }
+        else { state = EnemyState.turnedOff; }
+
         rb.transform.parent = null;
         player = FindObjectOfType<Player>();
+
+        // Randomize charge cooldown time
+        chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
+        Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if(!turnedOn)
         {
             speedInput = 0;
             turnInput = 0;
-            rb.isKinematic = false;
             return;
         }
-        speedInput = forwardNormalAccel * 1000f;
-        // speedInput = 0;
-        //turnInput = Input.GetAxis("Horizontal");
-
+        */
         // Need to know if enemy should turn or not. Linear algebra!
         // Project the vector between enemy and player to x-z plane of the enemy.
         Vector3 normal = transform.up;
@@ -68,7 +111,82 @@ public class EnemyCarController : MonoBehaviour
 
         float clampedAngle = Mathf.Clamp(angle, -angleForMaxTurning, angleForMaxTurning);
 
-        turnInput = clampedAngle / angleForMaxTurning;
+        
+
+        switch (state)
+        {
+            case EnemyState.turnedOff:
+                speedInput = 0;
+                turnInput = 0;
+                rb.gameObject.SetActive(false);
+                return;
+
+            case EnemyState.normal:
+                speedInput = forwardNormalAccel * 1000f;
+                turnInput = clampedAngle / angleForMaxTurning;
+                rb.gameObject.SetActive(true);
+
+
+                // Countdown time until preCharge
+                chargeCooldownTimer += Time.deltaTime;
+                if(chargeCooldownTimer >= chargeCooldownTime)
+                {
+                    state = EnemyState.preCharging;
+                    // Randomize charge cooldown time
+                    chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
+                    Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
+                    chargeCooldownTimer = 0;
+                }
+
+                break;
+            case EnemyState.charging:
+                speedInput = forwardChargeAccel * 1000f;
+                turnInput = 0;
+                rb.gameObject.SetActive(true);
+
+                fauxGravity2.ToggleHighGravity(true);
+
+                // Countdown time until Recharging
+                chargeTimer += Time.deltaTime;
+                if (chargeTimer >= chargeTime)
+                {
+                    state = EnemyState.recharging;
+                    chargeTimer = 0;
+                    fauxGravity2.ToggleHighGravity(false);
+                    rb.velocity = Vector3.zero;
+                }
+                break;
+            case EnemyState.recharging:
+                speedInput = 0;
+                turnInput = 0;
+                rb.velocity = Vector3.zero;
+                rb.gameObject.SetActive(false);
+
+                // Countdown time until normal
+                rechargeTimer += Time.deltaTime;
+                if (rechargeTimer >= rechargeTime)
+                {
+                    state = EnemyState.normal;
+                    rechargeTimer = 0;
+                }
+                return;
+            case EnemyState.preCharging:
+                turnInput = clampedAngle / angleForMaxTurning;
+                speedInput = 0;
+                rb.gameObject.SetActive(false);
+
+                // Countdown time until charge
+                preChargeTimer += Time.deltaTime;
+                if (preChargeTimer >= preChargeTime)
+                {
+                    state = EnemyState.charging;
+                    preChargeTimer = 0;
+                }
+                break;
+        }
+
+        // Special case:
+        if(goingStraight) { turnInput = 0; }
 
         // Rotation
         RaycastHit hit;
@@ -81,6 +199,12 @@ public class EnemyCarController : MonoBehaviour
         transform.position = rb.transform.position;
     }
 
+    public void GoStraight()
+    {
+        goingStraight = true;
+    }
+
+
     private void FixedUpdate()
     {
         grounded = false;
@@ -91,6 +215,11 @@ public class EnemyCarController : MonoBehaviour
             grounded = true;
 
         }
+
+        // Rotate along planet
+        Quaternion newRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+        transform.rotation = newRotation;
+
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) + 90, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn - 90, leftFrontWheel.localRotation.eulerAngles.z);
 
@@ -98,7 +227,21 @@ public class EnemyCarController : MonoBehaviour
         {
             rb.drag = dragOnGround;
 
-            if (Mathf.Abs(speedInput) > 0 && rb.velocity.magnitude < maxChargeSpeed)
+            float maxSpeed = 0;
+            switch (state)
+            {
+                case EnemyState.normal:
+                    maxSpeed = maxNormalSpeed;
+                    break;
+                case EnemyState.charging:
+                    maxSpeed = maxChargeSpeed;
+                    break;
+                case EnemyState.recharging:
+                    return;
+                default:
+                    break;
+            }
+            if (Mathf.Abs(speedInput) > 0 && rb.velocity.magnitude < maxSpeed)
             {
                 rb.AddForce(transform.forward * speedInput);
             }

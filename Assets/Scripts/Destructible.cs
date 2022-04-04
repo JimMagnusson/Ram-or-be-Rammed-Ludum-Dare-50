@@ -10,7 +10,7 @@ public class Destructible : MonoBehaviour
 
     [SerializeField] private int partsRequiredToDestroy = 5;
 
-    [SerializeField] private GameObject particles;
+    [SerializeField] private ParticleSystem isDestroyedParticles;
 
     private AudioSource audioSource;
     private bool collidedWith = false;
@@ -35,14 +35,22 @@ public class Destructible : MonoBehaviour
             audioSource.PlayOneShot(destroySound);
         }
 
-        foreach (Transform body in bodies)
+
+        if(GetComponent<MeshRenderer>() == null)
         {
-            body.gameObject.SetActive(false);
+            foreach (Transform body in bodies)
+            {
+                body.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().enabled = false;
         }
 
-        if (particles != null)
+        if(isDestroyedParticles != null)
         {
-            particles = Instantiate(particles, transform.position, Quaternion.identity, null);
+            isDestroyedParticles.Play();
         }
 
         Destroy(gameObject, 1f);

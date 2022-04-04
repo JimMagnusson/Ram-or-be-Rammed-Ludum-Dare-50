@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public void DoGetDestroyedEffects()
     {
         if(destroyed) { return; }
+        destroyed = true;
         enemyCarController.TurnOffCar();
 
         // SFX
@@ -47,7 +48,12 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Destructible"))
         {
-            other.GetComponentInParent<Destructible>().DoDestructionEffects();
+            Destructible destructible = GetComponent<Destructible>();
+            if (destructible == null)
+            {
+                destructible = other.transform.GetComponentInParent<Destructible>();
+            }
+            destructible.DoDestructionEffects();
         }
     }
 }

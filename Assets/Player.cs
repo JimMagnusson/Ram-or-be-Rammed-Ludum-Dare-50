@@ -8,13 +8,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioClip isDestroyedSound = null;
 
-    [SerializeField] private GameObject isDestroyedParticles;
+    [SerializeField] private ParticleSystem isDestroyedParticles;
 
     private AudioSource audioSource;
     private PartCollector partCollector;
     private CarController4 carController4;
 
     private UIManager uIManager;
+
+    private bool destroyed = false;
 
 
     private void Start()
@@ -25,8 +27,9 @@ public class Player : MonoBehaviour
     }
     private void DoDestroyedEffects()
     {
+        if (destroyed) { return; }
+        destroyed = true;
         carController4.ToggleCar(false);
-
         // SFX
         if (audioSource != null && isDestroyedSound != null)
         {
@@ -34,10 +37,7 @@ public class Player : MonoBehaviour
         }
 
         // TODO: VFX
-        if (isDestroyedParticles != null)
-        {
-            isDestroyedParticles = Instantiate(isDestroyedParticles, transform.position, Quaternion.identity, null);
-        }
+        isDestroyedParticles.Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,7 +64,12 @@ public class Player : MonoBehaviour
         }
         else if (other.transform.CompareTag("Destructible"))
         {
-            Destructible destructible = other.transform.GetComponentInParent<Destructible>();
+            Destructible destructible = GetComponent<Destructible>();
+            if(destructible == null)
+            {
+                destructible = other.transform.GetComponentInParent<Destructible>();
+            }
+
             if (partCollector.GetPartsCollected() >= destructible.GetPartsRequiredToDestroy())
             {
                 destructible.DoDestructionEffects();

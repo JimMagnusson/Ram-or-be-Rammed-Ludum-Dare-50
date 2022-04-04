@@ -508,6 +508,11 @@ MonoBehaviour:
   front: {fileID: 2219527807606624105}
   side: {fileID: 46785658642046122}
   roof: {fileID: 3982505374445633816}
+  collectSound1: {fileID: 8300000, guid: 8995efbd15a5e324f80b230eac4681d3, type: 3}
+  collectSound2: {fileID: 8300000, guid: 275ae263864318f458518683bd5da487, type: 3}
+  collectSound3: {fileID: 8300000, guid: 1ab0aa26f04ab6f45ab244bddfc2f415, type: 3}
+  collectSound4: {fileID: 8300000, guid: 0ad04ab428d150449b24981091e09263, type: 3}
+  collectSound5: {fileID: 8300000, guid: 101374425f84aa44c914fe07d7b6de05, type: 3}
 --- !u!114 &6720684710939250954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partsRequiredToWin: 5
-  isDestroyedSound: {fileID: 0}
+  isDestroyedSound: {fileID: 8300000, guid: dfcf863aa92294a4b93ae2d19c552288, type: 3}
   isDestroyedParticles: {fileID: 5435416512679976593}
 --- !u!114 &-5707746500144040262
 MonoBehaviour:
@@ -563,7 +568,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  groundRayLength: 0.5
+  groundRayLength: 5
   groundRayPoint: {fileID: 1877175277634931691}
   leftFrontWheel: {fileID: 1951074106344611474}
   rightFrontWheel: {fileID: 5796527323944263074}

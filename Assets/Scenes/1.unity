@@ -4872,6 +4872,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 670608898, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 670608899, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1.5
@@ -4894,7 +4898,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5b9dfd064cb182240b39daf0546c97b7, type: 2}
     - target: {fileID: 670608900, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 670608900, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
       propertyPath: m_fontSize
@@ -4904,6 +4908,21 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 97.64
       objectReference: {fileID: 0}
+    - target: {fileID: 670608900, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
+      propertyPath: m_text
+      value: 'PAUSED
+
+        Press P to unpause
+
+        R to retry
+
+        M to
+        mute/unmute'
+      objectReference: {fileID: 0}
+    - target: {fileID: 670608900, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8519203261310607385, guid: 5b9dfd064cb182240b39daf0546c97b7, type: 2}
     - target: {fileID: 1262433957, guid: e7a5d2f279258744b83dc9b5bc63242c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1.9

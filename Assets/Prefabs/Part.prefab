@@ -63,7 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3258acbb9b1004c833e3be26b172c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectSound: {fileID: 0}
   bodies:
   - {fileID: 5231496383311694365}
   - {fileID: 3862714931936323885}
@@ -79,8 +78,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7637002, y: 0.6709557, z: 0.8123779}
-  m_Center: {x: -0.050545216, y: 0.099658936, z: -0.011779785}
+  m_Size: {x: 1.1088505, y: 1.0690742, z: 1.2198414}
+  m_Center: {x: -0.10097398, y: 0.095685124, z: -0.0025063173}
 --- !u!82 &2821039256173044401
 AudioSource:
   m_ObjectHideFlags: 0

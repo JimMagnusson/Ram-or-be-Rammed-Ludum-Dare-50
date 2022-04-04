@@ -146,20 +146,22 @@ public class EnemyCarController : MonoBehaviour
                 turnInput = clampedAngle / angleForMaxTurning;
                 rb.gameObject.SetActive(true);
 
-
-                // Countdown time until preCharge
-                chargeCooldownTimer += Time.deltaTime;
-                if(chargeCooldownTimer >= chargeCooldownTime)
+                if(chargeEnabled)
                 {
-                    state = EnemyState.preCharging;
-                    // Randomize charge cooldown time
-                    chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
-                    Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
-                    chargeCooldownTimer = 0;
-                    trailParticlesLeft.Play();
-                    trailParticlesRight.Play();
-                    chargeParticles.Play();
-                    chargeParticles2.Play();
+                    // Countdown time until preCharge
+                    chargeCooldownTimer += Time.deltaTime;
+                    if (chargeCooldownTimer >= chargeCooldownTime)
+                    {
+                        state = EnemyState.preCharging;
+                        // Randomize charge cooldown time
+                        chargeCooldownTime = Random.Range(chargeCooldownMinTime, chargeCooldownMaxTime);
+                        Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
+                        chargeCooldownTimer = 0;
+                        trailParticlesLeft.Play();
+                        trailParticlesRight.Play();
+                        chargeParticles.Play();
+                        chargeParticles2.Play();
+                    }
                 }
 
                 break;

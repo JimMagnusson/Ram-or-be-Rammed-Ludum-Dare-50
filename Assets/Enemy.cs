@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ParticleSystem isDestroyedParticles;
     [SerializeField] private ParticleSystem isDestroyedParticles2;
 
+    [SerializeField] private Transform[] bodies;
+
     private AudioSource audioSource;
     private EnemyCarController enemyCarController;
     private bool destroyed = false;
@@ -34,6 +36,10 @@ public class Enemy : MonoBehaviour
         isDestroyedParticles.Play();
         isDestroyedParticles2.Play();
 
+        foreach (Transform body in bodies)
+        {
+            body.gameObject.SetActive(false);
+        }
     }
 
     public void GoStraight()

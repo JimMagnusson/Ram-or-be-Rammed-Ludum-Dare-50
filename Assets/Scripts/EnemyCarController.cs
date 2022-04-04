@@ -65,6 +65,9 @@ public class EnemyCarController : MonoBehaviour
 
     public ParticleSystem engineParticles;
 
+    public ParticleSystem smokeParticles;
+    public ParticleSystem smokeParticles2;
+
     public ParticleSystem chargeParticles;
     public ParticleSystem chargeParticles2;
 
@@ -73,6 +76,8 @@ public class EnemyCarController : MonoBehaviour
         state = EnemyState.turnedOff;
         trailParticlesLeft.Stop();
         trailParticlesRight.Stop();
+        smokeParticles.Stop();
+        smokeParticles2.Stop();
     }
     public void TurnOnCar()
     {
@@ -83,6 +88,8 @@ public class EnemyCarController : MonoBehaviour
         }
         trailParticlesLeft.Play();
         trailParticlesRight.Play();
+        smokeParticles.Play();
+        smokeParticles2.Play();
     }
 
     // Start is called before the first frame update
@@ -104,6 +111,8 @@ public class EnemyCarController : MonoBehaviour
         Debug.Log("chargeCooldownTime: " + chargeCooldownTime);
         trailParticlesLeft.Stop();
         trailParticlesRight.Stop();
+        smokeParticles.Stop();
+        smokeParticles2.Stop();
 
     }
 
@@ -159,6 +168,8 @@ public class EnemyCarController : MonoBehaviour
                         chargeCooldownTimer = 0;
                         trailParticlesLeft.Play();
                         trailParticlesRight.Play();
+                        smokeParticles.Play();
+                        smokeParticles2.Play();
                         chargeParticles.Play();
                         chargeParticles2.Play();
                     }
@@ -182,6 +193,8 @@ public class EnemyCarController : MonoBehaviour
                     rb.velocity = Vector3.zero;
                     trailParticlesLeft.Stop();
                     trailParticlesRight.Stop();
+                    smokeParticles.Stop();
+                    smokeParticles2.Stop();
                     engineParticles.Play();
                     chargeParticles.Stop();
                     chargeParticles2.Stop();
@@ -201,6 +214,8 @@ public class EnemyCarController : MonoBehaviour
                     rechargeTimer = 0;
                     trailParticlesLeft.Play();
                     trailParticlesRight.Play();
+                    smokeParticles.Play();
+                    smokeParticles2.Play();
                     engineParticles.Stop();
                 }
                 return;

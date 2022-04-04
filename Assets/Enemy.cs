@@ -6,10 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private AudioClip isDestroyedSound = null;
 
-    [SerializeField] private GameObject isDestroyedParticles;
+    [SerializeField] private ParticleSystem isDestroyedParticles;
 
     private AudioSource audioSource;
     private EnemyCarController enemyCarController;
+    private bool destroyed = false;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
 
     public void DoGetDestroyedEffects()
     {
+        if(destroyed) { return; }
         enemyCarController.TurnOffCar();
 
         // SFX
@@ -26,11 +28,9 @@ public class Enemy : MonoBehaviour
             audioSource.PlayOneShot(isDestroyedSound);
         }
 
-        // TODO: VFX
-        if (isDestroyedParticles != null)
-        {
-            isDestroyedParticles = Instantiate(isDestroyedParticles, transform.position, Quaternion.identity, null);
-        }
+        //VFX
+        isDestroyedParticles.Play();
+
     }
 
     public void GoStraight()

@@ -63,6 +63,10 @@ public class EnemyCarController : MonoBehaviour
     public ParticleSystem trailParticlesLeft;
     public ParticleSystem trailParticlesRight;
 
+    public ParticleSystem engineParticles;
+
+    public ParticleSystem chargeParticles;
+
     public void TurnOffCar()
     {
         state = EnemyState.turnedOff;
@@ -173,6 +177,7 @@ public class EnemyCarController : MonoBehaviour
                     rb.velocity = Vector3.zero;
                     trailParticlesLeft.Stop();
                     trailParticlesRight.Stop();
+                    engineParticles.Play();
                 }
                 break;
             case EnemyState.recharging:
@@ -189,6 +194,7 @@ public class EnemyCarController : MonoBehaviour
                     rechargeTimer = 0;
                     trailParticlesLeft.Play();
                     trailParticlesRight.Play();
+                    engineParticles.Stop();
                 }
                 return;
             case EnemyState.preCharging:

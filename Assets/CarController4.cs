@@ -32,7 +32,6 @@ public class CarController4 : MonoBehaviour
     public float rotationSmoothFactor = 5;
     public float rotationSmoothFactorBodies = 5;
 
-    public MovementSphere movementSphere;
 
     public void ToggleCar(bool boolean)
     {
@@ -56,11 +55,11 @@ public class CarController4 : MonoBehaviour
         speedInput = Input.GetAxis("Vertical") * forwardNormalAccel * 1000f;
 
         turnInput = Input.GetAxis("Horizontal");
-
     }
 
     private void FixedUpdate()
     {
+        if(!turnedOn) { return; }
         grounded = false;
         RaycastHit hit;
 

@@ -15,26 +15,25 @@ public class Part : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // VFX and SFX when collected.
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            if(particles != null)
-            {
-                particles = Instantiate(particles, transform.position, Quaternion.identity, null);
-            }
-            if (audioSource != null)
-            {
-                audioSource.PlayOneShot(collectSound);
-            }
-            gameObject.GetComponent<BoxCollider>().enabled = false;
 
-            foreach (Transform body in bodies)
-            {
-                body.gameObject.SetActive(false);
-            }
-            Destroy(gameObject, 1f);
+
+    // VFX and SFX when collected.
+    public void DoCollectEffects()
+    {
+        if (particles != null)
+        {
+            particles = Instantiate(particles, transform.position, Quaternion.identity, null);
         }
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(collectSound);
+        }
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        foreach (Transform body in bodies)
+        {
+            body.gameObject.SetActive(false);
+        }
+        Destroy(gameObject, 1f);
     }
 }

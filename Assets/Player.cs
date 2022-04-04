@@ -12,35 +12,17 @@ public class Player : MonoBehaviour
 
     private AudioSource audioSource;
     private PartCollector partCollector;
-    private CarController3 carController3;
+    private CarController4 carController4;
+
 
     private void Start()
     {
         partCollector = GetComponent<PartCollector>();
-        carController3 = GetComponent<CarController3>();
+        carController4 = GetComponent<CarController4>();
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Enemy"))
-        {
-            if(partCollector.GetPartsCollected() >= partsRequiredToWin)
-            {
-                other.GetComponent<Enemy>().DoGetDestroyedEffects();
-
-                // TODO: Win level!
-            }
-            else
-            {
-                DoDestroyedEffects();
-                other.GetComponent<Enemy>().Stop();
-            }
-        }
-    }
-
     private void DoDestroyedEffects()
     {
-        carController3.StopCar();
+        carController4.ToggleCar(false);
 
         // SFX
         if (audioSource != null && isDestroyedSound != null)
@@ -54,4 +36,36 @@ public class Player : MonoBehaviour
             isDestroyedParticles = Instantiate(isDestroyedParticles, transform.position, Quaternion.identity, null);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (partCollector.GetPartsCollected() >= partsRequiredToWin)
+            {
+                other.GetComponent<Enemy>().DoGetDestroyedEffects();
+
+                // TODO: Win level!
+            }
+            else
+            {
+                DoDestroyedEffects();
+                other.GetComponent<Enemy>().Stop();
+            }
+        }
+        else if (other.CompareTag("Part"))
+        {
+            partCollector.CollectPart();
+            other.GetComponent<Part>().DoCollectEffects();
+        }
+        else if (other.transform.CompareTag("Obstacle"))
+        {
+            Destructible destructible = other.transform.GetComponentInParent<Destructible>();
+            if (partCollector.GetPartsCollected() >= destructible.GetPartsRequiredToDestroy())
+            {
+                destructible.DoDestructionEffects();
+            }
+        }
+    }
+
 }

@@ -25,7 +25,7 @@ public class EnemyCarController : MonoBehaviour
 
     public float angleForMaxTurning = 90;
 
-    private CarController3 player;
+    private Player player;
     [SerializeField] private bool turnedOn = false;
 
     public void ToggleCar(bool boolean)
@@ -39,7 +39,7 @@ public class EnemyCarController : MonoBehaviour
     {
         rb.gameObject.SetActive(turnedOn);
         rb.transform.parent = null;
-        player = FindObjectOfType<CarController3>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame

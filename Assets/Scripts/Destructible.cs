@@ -18,29 +18,38 @@ public class Destructible : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public int GetPartsRequiredToDestroy()
+    {
+        return partsRequiredToDestroy;
+    }
+
     // VFX and SFX when collided with.
     public void CollideWith(Collider other)
     {
-        if(collidedWith) { return; }
-        collidedWith = true;
-        
-        bool collidedWithBigPlayer = other.gameObject.CompareTag("Player") && other.GetComponent<PartCollector>().GetPartsCollected() >= partsRequiredToDestroy;
-        if (collidedWithBigPlayer || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            if (audioSource != null)
-            {
-                audioSource.PlayOneShot(destroySound);
-            }
-
-            foreach (Transform body in bodies)
-            {
-                body.gameObject.SetActive(false);
-            }
-
-            // TODO: Trigger particles
-
-            Destroy(gameObject, 1f);
+            DoDestructionEffects();
         }
+    }
+
+    public void DoDestructionEffects()
+    {
+        if (collidedWith) { return; }
+        collidedWith = true;
+
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(destroySound);
+        }
+
+        foreach (Transform body in bodies)
+        {
+            body.gameObject.SetActive(false);
+        }
+
+        // TODO: Trigger particles
+
+        Destroy(gameObject, 1f);
     }
 
 }

@@ -27,40 +27,37 @@ public class PartCollector : MonoBehaviour
         return partsCollected;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CollectPart()
     {
-        if(other.GetComponent<Part>())
+        partsCollected++;
+        switch (partsCollected)
         {
-            partsCollected++;
-            switch(partsCollected)
-            {
-                case 1:
-                    if(togglesCarOnFirstPickup)
-                    {
-                        enemyCarController.ToggleCar(true);
-                    }
-                    under.gameObject.SetActive(true);
-                    break;
-                case 2:
-                    wheelCovers.gameObject.SetActive(true);
-                    break;
-                case 3:
-                    front.gameObject.SetActive(true);
-                    break;
-                case 4:
-                    side.gameObject.SetActive(true);
-                    break;
-                case 5:
-                    roof.gameObject.SetActive(true);
-                    break;
-                default:
-                    Debug.LogError("More than 5 parts collected.");
-                    break;
-            }
-            if(grower != null)
-            {
-                grower.Grow();
-            }
+            case 1:
+                if (togglesCarOnFirstPickup)
+                {
+                    enemyCarController.ToggleCar(true);
+                }
+                under.gameObject.SetActive(true);
+                break;
+            case 2:
+                wheelCovers.gameObject.SetActive(true);
+                break;
+            case 3:
+                front.gameObject.SetActive(true);
+                break;
+            case 4:
+                side.gameObject.SetActive(true);
+                break;
+            case 5:
+                roof.gameObject.SetActive(true);
+                break;
+            default:
+                Debug.LogError("More than 5 parts collected.");
+                break;
+        }
+        if (grower != null)
+        {
+            grower.Grow();
         }
     }
 }

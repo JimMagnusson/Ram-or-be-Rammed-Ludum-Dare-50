@@ -9,6 +9,9 @@ public class CarController4 : MonoBehaviour
     public Transform slerpers;
     public Transform bodies;
 
+    public ParticleSystem trailParticles;
+    public ParticleSystem trailParticles2;
+
     public float forwardNormalAccel = 2f, maxNormalSpeed = 10f;
     public float forwardChargeAccel = 4f, maxChargeSpeed = 30f;
     public float turnStrength = 180f, dragOnGround = 3f;
@@ -55,6 +58,19 @@ public class CarController4 : MonoBehaviour
         speedInput = Input.GetAxis("Vertical") * forwardNormalAccel * 1000f;
 
         turnInput = Input.GetAxis("Horizontal");
+
+        /*
+        if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0.001)
+        {
+            trailParticles.Stop();
+            trailParticles2.Stop();
+        }
+        else if (Mathf.Abs(Input.GetAxis("Vertical")) >= 0.001 && !trailParticles.isPlaying)
+        {
+            trailParticles.Play();
+            trailParticles2.Play();
+        }
+        */
     }
 
     private void FixedUpdate()

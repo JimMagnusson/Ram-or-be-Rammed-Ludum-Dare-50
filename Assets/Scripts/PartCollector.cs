@@ -43,13 +43,13 @@ public class PartCollector : MonoBehaviour
                 wheelCovers.gameObject.SetActive(true);
                 break;
             case 3:
-                front.gameObject.SetActive(true);
-                break;
-            case 4:
                 side.gameObject.SetActive(true);
                 break;
-            case 5:
+            case 4:
                 roof.gameObject.SetActive(true);
+                break;
+            case 5:
+                front.gameObject.SetActive(true);
                 break;
             default:
                 Debug.LogError("More than 5 parts collected.");

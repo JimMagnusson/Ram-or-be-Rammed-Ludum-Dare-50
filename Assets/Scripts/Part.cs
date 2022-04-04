@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Part : MonoBehaviour
 {
-    [SerializeField] private AudioClip collectSound = null;
     [SerializeField] private Transform[] bodies;
     [SerializeField] private ParticleSystem particles;
 
@@ -23,10 +22,7 @@ public class Part : MonoBehaviour
 
         //VFX
         particles.Play();
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(collectSound);
-        }
+
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
         foreach (Transform body in bodies)

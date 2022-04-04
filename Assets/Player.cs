@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         partCollector = GetComponent<PartCollector>();
         carController4 = GetComponent<CarController4>();
         uIManager = FindObjectOfType<UIManager>();
@@ -35,8 +36,6 @@ public class Player : MonoBehaviour
         {
             audioSource.PlayOneShot(isDestroyedSound);
         }
-
-        // TODO: VFX
         isDestroyedParticles.Play();
     }
 

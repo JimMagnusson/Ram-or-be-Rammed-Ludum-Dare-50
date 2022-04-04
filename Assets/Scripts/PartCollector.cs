@@ -11,6 +11,13 @@ public class PartCollector : MonoBehaviour
     [SerializeField] private Transform side;
     [SerializeField] private Transform roof;
 
+    [SerializeField] private AudioClip collectSound1 = null;
+    [SerializeField] private AudioClip collectSound2 = null;
+    [SerializeField] private AudioClip collectSound3 = null;
+    [SerializeField] private AudioClip collectSound4 = null;
+    [SerializeField] private AudioClip collectSound5 = null;
+
+    private AudioSource audioSource;
     private Grower grower;
     private int partsCollected = 0;
     private EnemyCarController enemyCarController;
@@ -20,6 +27,7 @@ public class PartCollector : MonoBehaviour
     {
         grower = GetComponent<Grower>();
         enemyCarController = FindObjectOfType<EnemyCarController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public int GetPartsCollected()
@@ -38,18 +46,41 @@ public class PartCollector : MonoBehaviour
                     enemyCarController.TurnOnCar();
                 }
                 under.gameObject.SetActive(true);
+
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(collectSound1);
+                }
+
                 break;
             case 2:
                 wheelCovers.gameObject.SetActive(true);
+
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(collectSound2);
+                }
                 break;
             case 3:
                 side.gameObject.SetActive(true);
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(collectSound3);
+                }
                 break;
             case 4:
                 roof.gameObject.SetActive(true);
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(collectSound4);
+                }
                 break;
             case 5:
                 front.gameObject.SetActive(true);
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(collectSound5);
+                }
                 break;
             default:
                 Debug.LogError("More than 5 parts collected.");

@@ -6,7 +6,7 @@ public class Part : MonoBehaviour
 {
     [SerializeField] private AudioClip collectSound = null;
     [SerializeField] private Transform[] bodies;
-    [SerializeField] private GameObject particles;
+    [SerializeField] private ParticleSystem particles;
 
     private AudioSource audioSource;
 
@@ -20,10 +20,9 @@ public class Part : MonoBehaviour
     // VFX and SFX when collected.
     public void DoCollectEffects()
     {
-        if (particles != null)
-        {
-            particles = Instantiate(particles, transform.position, Quaternion.identity, null);
-        }
+
+        //VFX
+        particles.Play();
         if (audioSource != null)
         {
             audioSource.PlayOneShot(collectSound);

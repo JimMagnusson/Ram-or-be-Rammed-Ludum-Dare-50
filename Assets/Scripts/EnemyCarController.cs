@@ -66,6 +66,7 @@ public class EnemyCarController : MonoBehaviour
     public ParticleSystem engineParticles;
 
     public ParticleSystem chargeParticles;
+    public ParticleSystem chargeParticles2;
 
     public void TurnOffCar()
     {
@@ -157,6 +158,8 @@ public class EnemyCarController : MonoBehaviour
                     chargeCooldownTimer = 0;
                     trailParticlesLeft.Play();
                     trailParticlesRight.Play();
+                    chargeParticles.Play();
+                    chargeParticles2.Play();
                 }
 
                 break;
@@ -178,6 +181,8 @@ public class EnemyCarController : MonoBehaviour
                     trailParticlesLeft.Stop();
                     trailParticlesRight.Stop();
                     engineParticles.Play();
+                    chargeParticles.Stop();
+                    chargeParticles2.Stop();
                 }
                 break;
             case EnemyState.recharging:

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip isDestroyedSound = null;
 
     [SerializeField] private ParticleSystem isDestroyedParticles;
+    [SerializeField] private ParticleSystem isDestroyedParticles2;
 
     private AudioSource audioSource;
     private EnemyCarController enemyCarController;
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
 
         //VFX
         isDestroyedParticles.Play();
+        isDestroyedParticles2.Play();
 
     }
 

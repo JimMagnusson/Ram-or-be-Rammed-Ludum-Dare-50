@@ -65,7 +65,7 @@ MonoBehaviour:
   bodies:
   - {fileID: 5231496383311694365}
   - {fileID: 3862714931936323885}
-  particles: {fileID: 5843650444665850040, guid: 396839ae5c10e0449a7739ea1484a2ba, type: 3}
+  particles: {fileID: 0}
 --- !u!65 &1314093659
 BoxCollider:
   m_ObjectHideFlags: 0

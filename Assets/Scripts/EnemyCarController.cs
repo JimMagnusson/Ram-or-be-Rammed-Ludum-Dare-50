@@ -14,6 +14,7 @@ public enum EnemyState
 public class EnemyCarController : MonoBehaviour
 {
     public Rigidbody rb;
+    public Transform garage;
 
     public float forwardNormalAccel = 2f, maxNormalSpeed = 10f;
     public float forwardChargeAccel = 4f, maxChargeSpeed = 30f;
@@ -71,6 +72,10 @@ public class EnemyCarController : MonoBehaviour
     public void TurnOnCar()
     {
         state = EnemyState.normal;
+        if(garage != null && garage.gameObject.activeSelf)
+        {
+            garage.gameObject.SetActive(false);
+        }
         trailParticlesLeft.Play();
         trailParticlesRight.Play();
     }

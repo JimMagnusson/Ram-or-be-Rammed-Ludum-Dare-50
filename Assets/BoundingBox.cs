@@ -11,7 +11,6 @@ public class BoundingBox : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Player out of bounds");
         if (levelLoader != null)
         {
             levelLoader.ReloadScene();

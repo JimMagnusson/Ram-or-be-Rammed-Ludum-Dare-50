@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154345539}
   m_Layer: 0
-  m_Name: Offset
+  m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154345538}
-  m_LocalRotation: {x: -0.44343072, y: 0.54797244, z: -0.43898535, w: -0.55712414}
-  m_LocalPosition: {x: 16.040955, y: 35.899734, z: -0.10131836}
+  m_LocalRotation: {x: -0.18530615, y: 0.67622495, z: -0.18415777, w: -0.6888159}
+  m_LocalPosition: {x: 29.414845, y: 17.166061, z: -0.13427734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4106304900889905853}
@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 474058883318176691}
   - component: {fileID: 6194993260449058443}
   - component: {fileID: 5136843399664045506}
+  - component: {fileID: 1143316768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -390,6 +391,7 @@ MonoBehaviour:
   maxWheelTurn: 25
   moveSpeed: 5
   rotationSpeed: 100
+  partsRequiredForObjects: 5
 --- !u!114 &474058883318176684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2414269545b632f43b497a3f28920d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  togglesCarOnFirstPickup: 1
   under: {fileID: 6892102278508637179}
   wheelCovers: {fileID: 4458010677045624781}
   front: {fileID: 342352942950077345}
@@ -509,6 +512,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeIncreasePerPart: 0.3
   toGrow: {fileID: 1268072132714214927}
+--- !u!114 &1143316768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891531125727620197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837fe4746d3c9df49919c4aebdd7fe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partsRequiredToWin: 5
+  isDestroyedSound: {fileID: 0}
+  isDestroyedParticles: {fileID: 0}
 --- !u!1001 &237267245265597514
 PrefabInstance:
   m_ObjectHideFlags: 0

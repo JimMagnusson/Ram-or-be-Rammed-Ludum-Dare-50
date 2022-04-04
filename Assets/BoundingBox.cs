@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class BoundingBox : MonoBehaviour
 {
-    LevelLoader levelLoader;
+    UIManager uIManager;
     private void Start()
     {
-        levelLoader = FindObjectOfType<LevelLoader>();
+        uIManager = FindObjectOfType<UIManager>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Got hit by: " + collision.gameObject.name);
-        if (levelLoader != null)
-        {
-            levelLoader.ReloadScene();
-        }
+        uIManager.ShowRetryImage();
     }
 }

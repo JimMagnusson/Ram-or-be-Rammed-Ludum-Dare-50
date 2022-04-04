@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+    UIManager uIManager;
+    private void Start()
+    {
+        uIManager = FindObjectOfType<UIManager>();
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -23,7 +29,20 @@ public class LevelLoader : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
+            if(uIManager.PauseImageScreenIsActive()) 
+            {
+                Time.timeScale = 1;
+            }
             ReloadScene();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+        }
+        //&& Input.GetKeyDown(KeyCode.Return
+        if ((uIManager.RetryImageScreenIsActive() || uIManager.WinLevelScreenIsActive()) && Input.GetKeyDown(KeyCode.Return))
+        {
+            LoadNextScene();
         }
     }
 }

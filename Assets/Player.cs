@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     private PartCollector partCollector;
     private CarController4 carController4;
 
+    private UIManager uIManager;
+
 
     private void Start()
     {
         partCollector = GetComponent<PartCollector>();
         carController4 = GetComponent<CarController4>();
+        uIManager = FindObjectOfType<UIManager>();
     }
     private void DoDestroyedEffects()
     {
@@ -45,12 +48,13 @@ public class Player : MonoBehaviour
             {
                 other.GetComponent<Enemy>().DoGetDestroyedEffects();
 
-                // TODO: Win level!
+                uIManager.ShowWinLevelScreen();
             }
             else
             {
                 DoDestroyedEffects();
                 other.GetComponent<Enemy>().GoStraight();
+                uIManager.ShowRetryImage();
             }
         }
         else if (other.CompareTag("Part"))

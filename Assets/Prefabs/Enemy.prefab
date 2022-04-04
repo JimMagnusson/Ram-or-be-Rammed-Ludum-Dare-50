@@ -812,9 +812,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1576071908}
-  forwardNormalAccel: 2
+  forwardNormalAccel: 2.5
   maxNormalSpeed: 10
-  forwardChargeAccel: 4
+  forwardChargeAccel: 20
   maxChargeSpeed: 20
   turnStrength: 180
   dragOnGround: 3
@@ -829,12 +829,12 @@ MonoBehaviour:
   angleForMaxTurning: 90
   turnedOnAtStart: 0
   rechargeTime: 3
-  preChargeTime: 2
+  preChargeTime: 1.5
   chargeCooldownMinTime: 3
   chargeCooldownMaxTime: 6
-  chargeTime: 3
+  chargeTime: 0.5
   chargeEnabled: 1
-  state: 2
+  state: 0
 --- !u!65 &4463162937430673158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
   groundRayPoint: {fileID: 1127119909}
   rb: {fileID: 1576071908}
   gravityConstant: 40
-  highGravityConstant: 20
+  highGravityConstant: 200
 --- !u!1 &2950813039174844460
 GameObject:
   m_ObjectHideFlags: 0

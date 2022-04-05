@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/2 -.unity
-    guid: 22878329f81bdf24db1f72d12a184298
+    path: Assets/Scenes/2.unity
+    guid: 48615ea7a89d51c48b058fcb410c66a6
+  - enabled: 1
+    path: Assets/Scenes/3 - Donut.unity
+    guid: fb69865dba29a5640a13250be616fc10
   - enabled: 1
     path: Assets/Scenes/4 - Rocky Road.unity
     guid: dfce53558809a154e8c9476122e03eb7
-  - enabled: 0
-    path: Assets/Scenes/5.unity
-    guid: 406a6e7fe4a450744b4bef7f7350864e
-  - enabled: 0
-    path: Assets/Scenes/Oval.unity
-    guid: 663fd1f9a924b9647a5dbe1ad7cacf7a
+  - enabled: 1
+    path: Assets/Scenes/5 - Spiky.unity
+    guid: 1fd4169b3f59dc24cac383db2322043a
   m_configObjects: {}

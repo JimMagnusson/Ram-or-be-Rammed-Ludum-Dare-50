@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1073118286}
   m_Layer: 0
   m_Name: Tree2_Branch2
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69206881410510438}
   - component: {fileID: 8419599539942914455}
+  - component: {fileID: 2100148443861404141}
   m_Layer: 0
   m_Name: Tree2
   m_TagString: Untagged
@@ -122,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 846131261126489308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 443889620011340598}
   - {fileID: 3054498812854618555}
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82df1bc2bc1d16e45a8b2af685aed61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroySound: {fileID: 0}
+  destroySound: {fileID: 8300000, guid: 0e2c9cdb6fc31774fb0f47760da4b89f, type: 3}
   bodies:
   - {fileID: 443889620011340598}
   - {fileID: 3054498812854618555}
@@ -156,6 +157,102 @@ MonoBehaviour:
   - {fileID: 7498667195670670252}
   partsRequiredToDestroy: 5
   isDestroyedParticles: {fileID: 7381223862519648075, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
+--- !u!82 &2100148443861404141
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846131261126489308}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1837674046161967169
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +267,7 @@ GameObject:
   - component: {fileID: 637834968}
   m_Layer: 0
   m_Name: Tree2_Leaves2
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +363,7 @@ GameObject:
   - component: {fileID: 231207512}
   m_Layer: 0
   m_Name: Tree2_Leaves3
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,7 +459,7 @@ GameObject:
   - component: {fileID: 904213066}
   m_Layer: 0
   m_Name: Tree2_Branch1
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +555,7 @@ GameObject:
   - component: {fileID: 885473767}
   m_Layer: 0
   m_Name: Tree2_Leaves1
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,7 +651,7 @@ GameObject:
   - component: {fileID: 57405348}
   m_Layer: 0
   m_Name: Tree2_Trunk
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -686,6 +783,18 @@ PrefabInstance:
     - target: {fileID: 7381223862519648074, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381223862519648074, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381223862519648074, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381223862519648074, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7381223862519648117, guid: 02d62b6f6f74da24a9b9636f379ef75c, type: 3}
       propertyPath: m_Name

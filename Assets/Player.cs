@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -47,7 +48,14 @@ public class Player : MonoBehaviour
             {
                 other.GetComponent<Enemy>().DoGetDestroyedEffects();
 
-                uIManager.ShowWinLevelScreen();
+                if(SceneManager.GetActiveScene().buildIndex == 4)
+                {
+                    uIManager.ShowWonGameImage();
+                }
+                else
+                {
+                    uIManager.ShowWinLevelScreen();
+                }
             }
             else
             {

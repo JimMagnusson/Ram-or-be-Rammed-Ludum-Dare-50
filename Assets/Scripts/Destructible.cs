@@ -50,6 +50,7 @@ public class Destructible : MonoBehaviour
 
         if(isDestroyedParticles != null)
         {
+            Debug.Log("Play: " + isDestroyedParticles);
             isDestroyedParticles.Play();
         }
 

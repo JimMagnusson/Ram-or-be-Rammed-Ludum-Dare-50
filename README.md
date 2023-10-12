@@ -9,6 +9,6 @@ Made by: Jim Magnusson - Programmer, Designer
 
 korfi - 3D Artist, Composer, Designer
 
+
 Tools used:
-Unity
-Blender
+Unity, Blender

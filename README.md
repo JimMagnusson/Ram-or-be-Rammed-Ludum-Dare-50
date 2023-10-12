@@ -1,4 +1,6 @@
 # Ram or be Rammed - Ludum Dare 50
+Play here: https://jimmagnusson.itch.io/ram-or-be-rammed
+
 Ludum Dare 50 Jam entry: https://ldjam.com/events/ludum-dare/50/ram-or-be-rammed
 
 Made in 72 hours

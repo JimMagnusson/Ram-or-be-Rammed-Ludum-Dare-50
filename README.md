@@ -1,4 +1,4 @@
-# LD50
+# Ram or be Rammed - Ludum Dare 50
 Ludum Dare 50 Jam entry: https://ldjam.com/events/ludum-dare/50/ram-or-be-rammed
 
 Made in 72 hours

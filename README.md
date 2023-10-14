@@ -5,7 +5,7 @@ Ludum Dare 50 Jam entry: https://ldjam.com/events/ludum-dare/50/ram-or-be-rammed
 
 Made in 72 hours
 
-![LD_50_screenshot](https://github.com/JimMagnusson/LD50/assets/50302387/9a39a78b-d8a6-4e27-adb9-09f4d7bf522b)
+![ezgif com-video-to-gif(1)](https://github.com/JimMagnusson/Ram-or-be-Rammed-Ludum-Dare-50/assets/50302387/cbf42bb2-d3f7-483d-82a3-5e2562add8e8)
 
 Made by: Jim Magnusson - Programmer, Designer
 
